@@ -1,14 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Genoom.Simpsons.Model
 {
+    public enum PersonSexEnum
+    {
+        Male,
+        Female
+    }
+
     public class Person
     {
         [Key]
-        private Guid Id { get; set; }
-        private string Name { get; set; }
-        private string Lastname { get; set; }
-        private DateTime Birthdate { get; set; }
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public string Lastname { get; set; }
+        public DateTime Birthdate { get; set; }
+        public PersonSexEnum Sex { get; set; }
+        public string PhotoFileName { get; set; }
     }
 }

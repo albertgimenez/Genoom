@@ -13,6 +13,6 @@ namespace Genoom.Simpsons.Model
 
     public class PersonFamily : Person
     {
-        public IEnumerable<Tuple<Person, PersonRelationshipEnum>> FamilyMembers { get; set; }
+        public ICollection<Tuple<Person, PersonRelationshipEnum>> FamilyMembers { get; set; }
     }
 }

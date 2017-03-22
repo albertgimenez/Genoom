@@ -24,7 +24,7 @@ namespace Genoom.Simpsons.Web.Controllers
 
         // POST api/values
         [HttpPost("{id}/children")]
-        public Guid Post([FromBody]Person body, Guid id)
+        public Guid Post(Guid id, [FromBody]Person body)
         {
             return Guid.NewGuid();
         }

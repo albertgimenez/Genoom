@@ -6,6 +6,8 @@
 
   "dependencies": {
     "Genoom.Simpsons.Model": "1.0.0-*",
+    "Genoom.Simpsons.Services.MongoDb": "1.0.0-*",
+    "Genoom.Simpsons.Services.Sql": "1.0.0-*",
     "NETStandard.Library": "1.6.1"
   },
 

@@ -1,9 +1,8 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Genoom.Simpsons.Web.Controllers
+namespace Genoom.Simpsons.Web.Controllers.Internal
 {
     public class ErrorController : Controller
     {

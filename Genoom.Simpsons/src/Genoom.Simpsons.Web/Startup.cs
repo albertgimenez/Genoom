@@ -35,7 +35,14 @@ namespace Genoom.Simpsons.Web
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "Error404",
+                    template: "{*url}",
+                    defaults: new { controller = "Error", action = "Handle404" }
+                );
+            });
         }
     }
 }

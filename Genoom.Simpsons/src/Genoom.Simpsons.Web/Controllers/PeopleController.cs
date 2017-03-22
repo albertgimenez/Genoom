@@ -1,41 +1,32 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using Genoom.Simpsons.Model;
 
 namespace Genoom.Simpsons.Web.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     public class PeopleController : Controller
     {
-        // GET api/values
-        [HttpGet]
-        public IEnumerable<string> Get()
+        // GET people/5
+        [HttpGet("{id}")]
+        public Person Get(Guid id)
         {
-            return new string[] { "value1", "value2" };
+            return new Person { Id = id };
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        // GET api/5/family
+        [HttpGet("{id}/family")]
+        public IEnumerable<Person> GetFamily(Guid id)
         {
-            return "value";
+            return new Person[10];
         }
 
         // POST api/values
-        [HttpPost]
-        public void Post([FromBody]string value)
+        [HttpPost("{id}/children")]
+        public Guid Post([FromBody]Person body, Guid id)
         {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return Guid.NewGuid();
         }
     }
 }

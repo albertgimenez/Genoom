@@ -1,13 +1,10 @@
 {
   "title": "Genoom.com Simpsons Sample",
-  "copyright": "2017 Albert GimÃ©nez",
+  "copyright": "2017 Albert Giménez",
   "description": "Genoom.com Simpsons Sample",
   "version": "1.0.0-*",
 
   "dependencies": {
-    "Genoom.Simpsons.Model": "1.0.0-*",
-    "Genoom.Simpsons.Services.MongoDb": "1.0.0-*",
-    "Genoom.Simpsons.Services.Sql": "1.0.0-*",
     "NETStandard.Library": "1.6.1"
   },
 

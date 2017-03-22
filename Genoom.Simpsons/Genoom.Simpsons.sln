@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		global.json = global.json
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Genoom.Simpsons.Services", "src\Genoom.Simpsons.Services\Genoom.Simpsons.Services.xproj", "{6EA00AF3-5878-4D5D-A5EB-53E0DCDC0CCB}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Genoom.Simpsons.Business", "src\Genoom.Simpsons.Business\Genoom.Simpsons.Business.xproj", "{6EA00AF3-5878-4D5D-A5EB-53E0DCDC0CCB}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Genoom.Simpsons.Model", "src\Genoom.Simpsons.Model\Genoom.Simpsons.Model.xproj", "{14B7C08E-2CCE-44F2-80D0-C84E24751732}"
 EndProject
@@ -20,15 +20,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests.u", "tests.u", "{94D4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests.i", "tests.i", "{7C06FB18-28BD-4B83-8E1C-41A9C28F8ECA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{C9E1DC4E-484B-4FD3-ADAD-E6C2E3FE095E}"
-EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Genoom.Simpsons.Web", "src\Genoom.Simpsons.Web\Genoom.Simpsons.Web.xproj", "{B160B9B6-9657-422B-A513-AB1EE9745E7B}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Genoom.Simpsons.Services.MongoDb", "src\Genoom.Simpsons.Services.MongoDb\Genoom.Simpsons.Services.MongoDb.xproj", "{B50319EE-AB05-4FA3-843E-FA95FD16F0C6}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Genoom.Simpsons.Repository.MongoDb", "src\Genoom.Simpsons.Repository.MongoDb\Genoom.Simpsons.Repository.MongoDb.xproj", "{B50319EE-AB05-4FA3-843E-FA95FD16F0C6}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Genoom.Simpsons.Services.Sql", "src\Genoom.Simpsons.Services.Sql\Genoom.Simpsons.Services.Sql.xproj", "{8D0802D4-EA45-49F7-88AB-A1FA15782724}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Genoom.Simpsons.Repository.Sql", "src\Genoom.Simpsons.Repository.Sql\Genoom.Simpsons.Repository.Sql.xproj", "{8D0802D4-EA45-49F7-88AB-A1FA15782724}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service.Strategies", "Service.Strategies", "{3905F7E3-A3B2-4C5B-83EE-60BA58006FC1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository.Strategy", "Repository.Strategy", "{3905F7E3-A3B2-4C5B-83EE-60BA58006FC1}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Genoom.Simpsons.Repository", "src\Genoom.Simpsons.Repository\Genoom.Simpsons.Repository.xproj", "{BD30BD11-D49A-4D34-9C60-80CE4142C7E7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{EF27DB84-6733-40AA-A609-843E0A9A4C63}"
+	ProjectSection(SolutionItems) = preProject
+		doc\Genoom Simpsons Family Tree.docx = doc\Genoom Simpsons Family Tree.docx
+		doc\Genoom Simpsons Family Tree.vsdx = doc\Genoom Simpsons Family Tree.vsdx
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,6 +62,10 @@ Global
 		{8D0802D4-EA45-49F7-88AB-A1FA15782724}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D0802D4-EA45-49F7-88AB-A1FA15782724}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D0802D4-EA45-49F7-88AB-A1FA15782724}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD30BD11-D49A-4D34-9C60-80CE4142C7E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD30BD11-D49A-4D34-9C60-80CE4142C7E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD30BD11-D49A-4D34-9C60-80CE4142C7E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD30BD11-D49A-4D34-9C60-80CE4142C7E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,5 +79,6 @@ Global
 		{B50319EE-AB05-4FA3-843E-FA95FD16F0C6} = {3905F7E3-A3B2-4C5B-83EE-60BA58006FC1}
 		{8D0802D4-EA45-49F7-88AB-A1FA15782724} = {3905F7E3-A3B2-4C5B-83EE-60BA58006FC1}
 		{3905F7E3-A3B2-4C5B-83EE-60BA58006FC1} = {F4A7AFB2-E492-406A-9CEF-6C6DB92E4380}
+		{BD30BD11-D49A-4D34-9C60-80CE4142C7E7} = {F4A7AFB2-E492-406A-9CEF-6C6DB92E4380}
 	EndGlobalSection
 EndGlobal

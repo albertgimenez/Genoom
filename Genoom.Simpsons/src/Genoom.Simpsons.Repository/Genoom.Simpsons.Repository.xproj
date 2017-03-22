@@ -7,8 +7,8 @@
 
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>6ea00af3-5878-4d5d-a5eb-53e0dcdc0ccb</ProjectGuid>
-    <RootNamespace>Genoom.Simpsons.Services</RootNamespace>
+    <ProjectGuid>bd30bd11-d49a-4d34-9c60-80ce4142c7e7</ProjectGuid>
+    <RootNamespace>Genoom.Simpsons.Repository</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">.\obj</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">.\bin\</OutputPath>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>

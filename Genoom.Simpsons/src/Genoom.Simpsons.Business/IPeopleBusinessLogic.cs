@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Genoom.Simpsons.Model;
 
-namespace Genoom.Simpsons.Services
+namespace Genoom.Simpsons.Business
 {
     public interface IPeopleService
     {

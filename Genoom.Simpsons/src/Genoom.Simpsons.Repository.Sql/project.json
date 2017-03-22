@@ -1,11 +1,11 @@
 {
+  "title": "Genoom.com Simpsons Sample",
+  "copyright": "2017 Albert Giménez",
+  "description": "Genoom.com Simpsons Sample",
   "version": "1.0.0-*",
 
   "dependencies": {
     "Genoom.Simpsons.Model": "1.0.0-*",
-    "MongoDB.Bson": "2.4.3",
-    "MongoDB.Driver": "2.4.3",
-    "MongoDB.Driver.Core": "2.4.3",
     "NETStandard.Library": "1.6.1"
   },
 

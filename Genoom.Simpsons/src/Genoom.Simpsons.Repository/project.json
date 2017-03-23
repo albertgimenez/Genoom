@@ -1,10 +1,11 @@
 {
   "title": "Genoom.com Simpsons Sample",
-  "copyright": "2017 Albert Giménez",
+  "copyright": "2017 Albert Gimï¿½nez",
   "description": "Genoom.com Simpsons Sample",
   "version": "1.0.0-*",
 
   "dependencies": {
+    "Genoom.Simpsons.Model": "1.0.0-*",
     "NETStandard.Library": "1.6.1"
   },
 

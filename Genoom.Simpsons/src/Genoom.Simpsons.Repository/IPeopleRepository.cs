@@ -10,7 +10,6 @@ namespace Genoom.Simpsons.Repository
         // Read
         Task<Person> GetPersonAsync(Guid id);
         Task<IEnumerable<PersonRelationship>> GetFamilyAsync(Guid id);
-        Task<IEnumerable<Person>> GetChildrenAsync(Guid id);
         Task<IEnumerable<Person>> GetTreeAsync(Guid id);
         Task<bool> HasPartnerAsync(Guid id);
 

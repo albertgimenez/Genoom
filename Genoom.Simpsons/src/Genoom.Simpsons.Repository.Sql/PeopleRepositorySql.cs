@@ -49,22 +49,6 @@ namespace Genoom.Simpsons.Repository.Sql
             });
         }
 
-        public async Task<IEnumerable<Person>> GetChildrenAsync(Guid id)
-        {
-            return await WithConnection(async connection =>
-            {
-                var parameters = new DynamicParameters();
-                parameters.Add("Id", id, DbType.Guid);
-
-                return await connection.QueryAsync<PersonRelationship>(
-                    sql: "SELECT RelatedPersonId Id, RelatedName Name, RelatedLastName Lastname, Birthdate, Sex, PhotoFileName " +
-                         "FROM PersonRelationshipView " +
-                         "WHERE PersonId = @Id",
-                    param: parameters,
-                    commandType: CommandType.Text);
-            });
-        }
-
         public async Task<IEnumerable<Person>> GetTreeAsync(Guid id)
         {
             return await WithConnection(async connection =>

@@ -12,10 +12,11 @@ namespace Genoom.Simpsons.Repository.Sql.Tests
     [TestClass]
     public class PeopleRepositorySqlTest
     {
-        private static string Connectionstring { get; set; }
+        // Properties
+        private static string ConnectionstringTest { get; set; }
 
 
-
+        // Ctor
         [ClassInitialize]
         public static void ClassInitialize()
         {
@@ -25,7 +26,7 @@ namespace Genoom.Simpsons.Repository.Sql.Tests
         }
 
 
-
+        // Public Methods
         /// <summary>
         /// Intention: Get Homer Simpson.
         /// Expected: Success
@@ -35,7 +36,7 @@ namespace Genoom.Simpsons.Repository.Sql.Tests
         public async Task GetPersonAsyncOkTest()
         {
             //ARRANGE
-            var testObject = new PeopleRepositorySql(Connectionstring);
+            var testObject = new PeopleRepositorySql(ConnectionstringTest);
 
             //ACT
             var testData = await testObject.GetPersonAsync(Guid.Parse("cb840eba-90bf-4d1f-8d3c-3b803f265959")); //Homer Simpson
@@ -43,7 +44,7 @@ namespace Genoom.Simpsons.Repository.Sql.Tests
             //ASSERT
             Assert.IsNotNull(testData);
             Assert.AreEqual("Homer", testData.Name);
-            Assert.AreEqual("Simpson", testData.Lastname);
+            Assert.AreEqual("Simpson", testData.LastName);
         }
 
         /// <summary>
@@ -55,17 +56,17 @@ namespace Genoom.Simpsons.Repository.Sql.Tests
         public async Task GetFamilyAsyncOkTest()
         {
             //ARRANGE
-            var testObject = new PeopleRepositorySql(Connectionstring);
+            var testObject = new PeopleRepositorySql(ConnectionstringTest);
 
             //ACT
             var testData = await testObject.GetFamilyAsync(Guid.Parse("cb840eba-90bf-4d1f-8d3c-3b803f265959")); //Homer Simpson
 
             //ASSERT
             Assert.IsNotNull(testData);
-            Assert.IsTrue(testData.Any(p => p.Name == "Marge" && p.Lastname == "Bouvier" && p.Relationship == Model.RelationshipEnum.Partner));
+            Assert.IsTrue(testData.Any(p => p.Name == "Marge" && p.LastName == "Bouvier" && p.Relationship == Model.RelationshipEnum.Partner));
             Assert.IsTrue(testData.Count(p => p.Relationship == Model.RelationshipEnum.Child) == 3); // Bart, Lisa, Maggie
-            Assert.IsTrue(testData.Any(p => p.Name == "Abraham" && p.Lastname == "Simpson" && p.Relationship == Model.RelationshipEnum.Parent));
-            Assert.IsTrue(testData.Any(p => p.Name == "Penelope" && p.Lastname == "Olsen" && p.Relationship == Model.RelationshipEnum.Parent));
+            Assert.IsTrue(testData.Any(p => p.Name == "Abraham" && p.LastName == "Simpson" && p.Relationship == Model.RelationshipEnum.Parent));
+            Assert.IsTrue(testData.Any(p => p.Name == "Penelope" && p.LastName == "Olsen" && p.Relationship == Model.RelationshipEnum.Parent));
         }
 
         /// <summary>
@@ -77,17 +78,18 @@ namespace Genoom.Simpsons.Repository.Sql.Tests
         public async Task GetTreeAsyncOkTest()
         {
             //ARRANGE
-            var testObject = new PeopleRepositorySql(Connectionstring);
+            var testObject = new PeopleRepositorySql(ConnectionstringTest);
 
             //ACT
             var testData = await testObject.GetTreeAsync(Guid.Parse("cb840eba-90bf-4d1f-8d3c-3b803f265959")); //Homer Simpson
 
             //ASSERT
             Assert.IsNotNull(testData);
-            Assert.IsTrue(testData.Any(p => p.Name == "Abraham" && p.Lastname == "Simpson"));
-            Assert.IsTrue(testData.Any(p => p.Name == "Penelope" && p.Lastname == "Olsen"));
-            Assert.IsTrue(testData.Any(p => p.Name == "Orville" && p.Lastname == "Simpson"));
-            Assert.IsTrue(testData.Any(p => p.Name == "Yuma" && p.Lastname == "Hickman"));
+            Assert.IsTrue(testData.Parents.Any(p => p.Name == "Abraham Simpson"));
+            Assert.IsTrue(testData.Parents.Any(p => p.Name == "Penelope Olsen"));
+            Assert.IsTrue(testData.Parents.SingleOrDefault(p => p.Name == "Abraham Simpson").Parents.Any(p => p.Name == "Orville Simpson"));
+            Assert.IsTrue(testData.Parents.SingleOrDefault(p => p.Name == "Abraham Simpson").Parents.Any(p => p.Name == "Yuma Hickman"));
+            Assert.IsFalse(testData.Parents.SingleOrDefault(p => p.Name == "Penelope Olsen").Parents.Any());
         }
 
         /// <summary>
@@ -99,7 +101,7 @@ namespace Genoom.Simpsons.Repository.Sql.Tests
         public async Task HasPartnerAsyncOkTest()
         {
             //ARRANGE
-            var testObject = new PeopleRepositorySql(Connectionstring);
+            var testObject = new PeopleRepositorySql(ConnectionstringTest);
 
             //ACT
             var testData = await testObject.HasPartnerAsync(Guid.Parse("cb840eba-90bf-4d1f-8d3c-3b803f265959")); //Homer Simpson
@@ -117,7 +119,7 @@ namespace Genoom.Simpsons.Repository.Sql.Tests
         public async Task HasPartnerAsyncFailTest()
         {
             //ARRANGE
-            var testObject = new PeopleRepositorySql(Connectionstring);
+            var testObject = new PeopleRepositorySql(ConnectionstringTest);
 
             //ACT
             var testData = await testObject.HasPartnerAsync(Guid.Parse("3AFCDFF6-275A-42B3-AE03-C3682EEE3E23")); //Lisa Simpson
@@ -135,7 +137,7 @@ namespace Genoom.Simpsons.Repository.Sql.Tests
         public async Task AddChildAsyncWithPartnerOkTest()
         {
             //ARRANGE
-            var testObject = new PeopleRepositorySql(Connectionstring);
+            var testObject = new PeopleRepositorySql(ConnectionstringTest);
             var testPerson = GetTestPerson();
 
             //ACT
@@ -154,7 +156,7 @@ namespace Genoom.Simpsons.Repository.Sql.Tests
         public async Task AddChildAsyncWithNoPartnerFailTest()
         {
             //ARRANGE
-            var testObject = new PeopleRepositorySql(Connectionstring);
+            var testObject = new PeopleRepositorySql(ConnectionstringTest);
             var testPerson = GetTestPerson();
 
             //ACT
@@ -165,7 +167,7 @@ namespace Genoom.Simpsons.Repository.Sql.Tests
         }
 
 
-
+        // Private Methods
         private static void GetTestConnectionString()
         {
             var builder = new ConfigurationBuilder()
@@ -173,12 +175,12 @@ namespace Genoom.Simpsons.Repository.Sql.Tests
                 .AddJsonFile("appsettings.json");
             var configuration = builder.Build();
 
-            Connectionstring = configuration.GetConnectionString("SqlConnectionTest");
+            ConnectionstringTest = configuration.GetConnectionString("SqlConnectionTest");
         }
 
         private static void CleanDb()
         {
-            using (var connection = new SqlConnection(Connectionstring))
+            using (var connection = new SqlConnection(ConnectionstringTest))
             {
                 connection.Open();
                 var dbCommand = connection.CreateCommand();
@@ -197,7 +199,7 @@ namespace Genoom.Simpsons.Repository.Sql.Tests
         {
             var file = File.ReadAllLines("TestData\\GenoomSimpsons.Data.sql");
 
-            using (var connection = new SqlConnection(Connectionstring)) {
+            using (var connection = new SqlConnection(ConnectionstringTest)) {
                 connection.Open();
                 var dbCommand = connection.CreateCommand();
 
@@ -215,7 +217,7 @@ namespace Genoom.Simpsons.Repository.Sql.Tests
         {
             return new Person {
                 Name = "TestName",
-                Lastname = "TestLastname",
+                LastName = "TestLastName",
                 Sex = SexEnum.Male,
                 PhotoFileName = "TestPhoto.jpg",
                 Birthdate = new DateTime(1992, 07, 24)

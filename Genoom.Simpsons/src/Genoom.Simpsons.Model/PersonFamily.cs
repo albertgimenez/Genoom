@@ -1,9 +1,15 @@
-﻿using System.Collections.Generic;
-
-namespace Genoom.Simpsons.Model
+﻿namespace Genoom.Simpsons.Model
 {
+    public enum RelationshipEnum
+    {
+        Partner,
+        Parent,
+        Sibling,
+        Child
+    }
+
     public class PersonFamily : Person
     {
-        public ICollection<PersonRelationship> FamilyMembers { get; set; }
+        public RelationshipEnum Relationship { get; set; }
     }
 }

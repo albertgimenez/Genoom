@@ -2,7 +2,7 @@
 (
     Id uniqueidentifier DEFAULT NEWID(),
     Name varchar(100) NOT NULL,
-    Lastname varchar(100),
+    LastName varchar(100),
     Birthdate datetime,
     Sex tinyint NOT NULL,
     PhotoFileName varchar(255),
@@ -25,7 +25,7 @@ GO
 
 CREATE VIEW PersonRelationshipView AS
 (
-    SELECT F.PersonId, P1.Name, P1.Lastname, F.RelatedPersonId, P2.Name RelatedName, P2.Lastname RelatedLastName, P2.Birthdate, P2.Sex, P2.PhotoFileName, F.RelationShip
+    SELECT F.PersonId, P1.Name, P1.LastName, F.RelatedPersonId, P2.Name RelatedName, P2.LastName RelatedLastName, P2.Birthdate, P2.Sex, P2.PhotoFileName, F.RelationShip
     FROM PersonFamily F
     LEFT JOIN Person P1 ON F.PersonId = P1.Id
     LEFT JOIN Person P2 ON F.RelatedPersonId = P2.Id
@@ -36,7 +36,7 @@ GO
 CREATE PROCEDURE [dbo].[AddChild]
     @ParentId uniqueidentifier,
     @Name varchar(100),
-    @Lastname varchar(100),
+    @LastName varchar(100),
     @Birthdate datetime,
     @Sex tinyint,
     @PhotoFileName varchar(255)

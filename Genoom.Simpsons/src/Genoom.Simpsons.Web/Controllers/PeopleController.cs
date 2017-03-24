@@ -10,21 +10,21 @@ namespace Genoom.Simpsons.Web.Controllers
     {
         // GET people/5
         [HttpGet("{id}")]
-        public Person Get(Guid id)
+        public Person Get([FromQuery]Guid id)
         {
             return new Person { Id = id };
         }
 
         // GET api/5/family
         [HttpGet("{id}/family")]
-        public IEnumerable<Person> GetFamily(Guid id)
+        public IEnumerable<Person> GetFamily([FromQuery]Guid id)
         {
             return new Person[10];
         }
 
         // POST api/values
         [HttpPost("{id}/children")]
-        public Guid Post(Guid id, [FromBody]Person body)
+        public Guid Post([FromQuery]Guid id, [FromBody]Person body)
         {
             return Guid.NewGuid();
         }

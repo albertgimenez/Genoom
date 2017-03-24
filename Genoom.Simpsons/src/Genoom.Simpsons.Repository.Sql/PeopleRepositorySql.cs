@@ -13,9 +13,9 @@ namespace Genoom.Simpsons.Repository.Sql
         public string ConnectionString { get; }
 
         // Ctor
-        public PeopleRepositorySql(string connectionstring) : base(connectionstring)
+        public PeopleRepositorySql(string connectionString) : base(connectionString)
         {
-            ConnectionString = connectionstring;
+            ConnectionString = connectionString;
         }
 
         // Methods

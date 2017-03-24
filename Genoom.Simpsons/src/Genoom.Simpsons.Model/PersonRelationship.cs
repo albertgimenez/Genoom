@@ -8,9 +8,8 @@
         Child
     }
 
-    public class PersonRelationship
+    public class PersonRelationship : Person
     {
-        public Person Person { get; set; }
         public RelationshipEnum Relationship { get; set; }
     }
 }

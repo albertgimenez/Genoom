@@ -7,6 +7,7 @@
   "dependencies": {
     "Dapper": "1.50.2",
     "Genoom.Simpsons.Model": "1.0.0-*",
+    "Genoom.Simpsons.Repository": "1.0.0-*",
     "NETStandard.Library": "1.6.1"
   },
 

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Genoom.Simpsons.Model
 {
-    public enum PersonSexEnum
+    public enum SexEnum
     {
         Male,
         Female
@@ -16,7 +16,7 @@ namespace Genoom.Simpsons.Model
         public string Name { get; set; }
         public string Lastname { get; set; }
         public DateTime Birthdate { get; set; }
-        public PersonSexEnum Sex { get; set; }
+        public SexEnum Sex { get; set; }
         public string PhotoFileName { get; set; }
     }
 }

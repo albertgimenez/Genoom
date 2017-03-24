@@ -1,0 +1,20 @@
+{
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "Genoom.Simpsons.Model": "1.0.0-*",
+    "Genoom.Simpsons.Repository.Sql": "1.0.0-*",
+    "Microsoft.Extensions.Configuration": "1.1.1",
+    "Microsoft.Extensions.Configuration.FileExtensions": "1.1.1",
+    "Microsoft.Extensions.Configuration.Json": "1.1.1",
+    "MSTest.TestAdapter": "1.1.13",
+    "MSTest.TestFramework": "1.1.13",
+    "NETStandard.Library": "1.6.1"
+  },
+
+  "frameworks": {
+    "netstandard1.6": {
+      "imports": "dnxcore50"
+    }
+  }
+}

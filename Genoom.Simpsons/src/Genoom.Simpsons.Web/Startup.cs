@@ -28,6 +28,9 @@ namespace Genoom.Simpsons.Web
             // Standard MVC
             services.AddMvc();
 
+            // Logging
+            services.AddLogging();
+
             // Swagger documentation API
             services.AddSwaggerGen(c =>
             {

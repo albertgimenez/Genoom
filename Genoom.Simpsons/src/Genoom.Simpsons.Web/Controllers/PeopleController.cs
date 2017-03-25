@@ -2,9 +2,9 @@
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Genoom.Simpsons.Model;
 using Genoom.Simpsons.Repository;
+using Genoom.Simpsons.Web.Support;
 
 namespace Genoom.Simpsons.Web.Controllers
 {
@@ -12,13 +12,11 @@ namespace Genoom.Simpsons.Web.Controllers
     public class PeopleController : Controller
     {
         // Properties
-        protected ILogger Logger { get; }
         protected IPeopleRepository RepositoryService { get; }
 
         // Ctor
-        public PeopleController(ILogger logger,IPeopleRepository repositoryService)
+        public PeopleController(IPeopleRepository repositoryService)
         {
-            Logger = logger;
             RepositoryService = repositoryService;
         }
 
@@ -31,12 +29,13 @@ namespace Genoom.Simpsons.Web.Controllers
                 var result = await RepositoryService.GetPersonAsync(id);
                 return result != null
                     ? (IActionResult) Ok(result)
-                    : NotFound(id);
+                    : NoContent();
             }
             catch (Exception exception)
             {
-                Logger.LogError(exception.Message);
-                throw;
+                return StatusCode(
+                    (int)HttpStatusCode.InternalServerError,
+                    ErrorResultHelper.Create(exception));
             }
         }
 
@@ -48,12 +47,13 @@ namespace Genoom.Simpsons.Web.Controllers
                 var result = await RepositoryService.GetFamilyAsync(id);
                 return result != null
                     ? (IActionResult)Ok(result)
-                    : NotFound(id);
+                    : NoContent();
             }
             catch (Exception exception)
             {
-                Logger.LogError(exception.Message);
-                throw;
+                return StatusCode(
+                    (int)HttpStatusCode.InternalServerError,
+                    ErrorResultHelper.Create(exception));
             }
         }
 
@@ -64,19 +64,20 @@ namespace Genoom.Simpsons.Web.Controllers
             try
             {
                 if (!await RepositoryService.HasPartnerAsync(id)) {
-                    Logger.LogError($"The person with <{id}> has no partner. Associate one to it and try to add the child again.");
+                    //Logger.LogError($"The person with <{id}> has no partner. Associate one to it and try to add the child again.");
                     return new StatusCodeResult((int)HttpStatusCode.PreconditionFailed);
                 }
 
                 var result = await RepositoryService.AddChildAsync(id, body);
                 return result != Guid.Empty
                     ? (IActionResult)Created(GetNewChildPath(result), result)
-                    : NotFound(id);
+                    : NoContent();
             }
             catch (Exception exception)
             {
-                Logger.LogError(exception.Message);
-                throw;
+                return StatusCode(
+                    (int)HttpStatusCode.InternalServerError,
+                    ErrorResultHelper.Create(exception));
             }
         }
 

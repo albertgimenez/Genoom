@@ -24,9 +24,9 @@ namespace Genoom.Simpsons.Repository.Sql
             return await WithConnection(async connection =>
             {
                 var parameters = new DynamicParameters();
-                parameters.Add("Id", id, DbType.Guid);
+                parameters.Add("@Id", id, DbType.Guid);
 
-                return await connection.QueryFirstOrDefaultAsync<Person>(
+                return await connection.QuerySingleOrDefaultAsync<Person>(
                     sql: "SELECT * FROM Person WHERE Id = @Id",
                     param: parameters,
                     commandType: CommandType.Text);
@@ -38,7 +38,7 @@ namespace Genoom.Simpsons.Repository.Sql
             return await WithConnection(async connection =>
             {
                 var parameters = new DynamicParameters();
-                parameters.Add("Id", id, DbType.Guid);
+                parameters.Add("@Id", id, DbType.Guid);
 
                 return await connection.QueryAsync<PersonFamily>(
                     sql: "SELECT RelatedPersonId Id, RelatedName Name, RelatedLastName LastName, Birthdate, Sex, PhotoFileName, Relationship " +
@@ -54,7 +54,7 @@ namespace Genoom.Simpsons.Repository.Sql
             var topPerson = await WithConnection(async connection =>
             {
                 var parameters = new DynamicParameters();
-                parameters.Add("Id", id, DbType.Guid);
+                parameters.Add("@Id", id, DbType.Guid);
 
                 return await connection.QuerySingleOrDefaultAsync<PersonWithParents>(
                     sql: "SELECT RelatedPersonId Id, RelatedName + ' ' + RelatedLastName Name " +
@@ -73,8 +73,8 @@ namespace Genoom.Simpsons.Repository.Sql
             return await WithConnection(async connection =>
             {
                 var parameters = new DynamicParameters();
-                parameters.Add("Id", id, DbType.Guid);
-                parameters.Add("Relationship", (short)RelationshipEnum.Partner, DbType.Int16);
+                parameters.Add("@Id", id, DbType.Guid);
+                parameters.Add("@Relationship", (short)RelationshipEnum.Partner, DbType.Int16);
 
                 var partnersCount = await connection.ExecuteScalarAsync(
                     sql: "SELECT COUNT(*) FROM PersonFamily WHERE PersonId = @Id AND RelationShip = @Relationship",

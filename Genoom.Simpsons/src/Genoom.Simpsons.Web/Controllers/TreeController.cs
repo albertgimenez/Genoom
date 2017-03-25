@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Genoom.Simpsons.Repository;
+using Genoom.Simpsons.Web.Support;
 
 namespace Genoom.Simpsons.Web.Controllers
 {
@@ -10,13 +11,11 @@ namespace Genoom.Simpsons.Web.Controllers
     public class TreeController : Controller
     {
         // Properties
-        protected ILogger Logger { get; }
         protected IPeopleRepository RepositoryService { get; }
 
         // Ctor
-        public TreeController(ILogger logger, IPeopleRepository repositoryService)
+        public TreeController(IPeopleRepository repositoryService)
         {
-            Logger = logger;
             RepositoryService = repositoryService;
         }
 
@@ -29,12 +28,13 @@ namespace Genoom.Simpsons.Web.Controllers
                 var result = await RepositoryService.GetTreeAsync(id);
                 return result != null
                     ? (IActionResult)Ok(result)
-                    : NotFound(id);
+                    : NoContent();
             }
             catch (Exception exception)
             {
-                Logger.LogError(exception.Message);
-                throw;
+                return StatusCode(
+                    (int)HttpStatusCode.InternalServerError,
+                    ErrorResultHelper.Create(exception));
             }
         }
     }

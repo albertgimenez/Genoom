@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Swagger;
+using Genoom.Simpsons.Repository;
 
 namespace Genoom.Simpsons.Web
 {
@@ -24,15 +25,17 @@ namespace Genoom.Simpsons.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add framework services.
-            //services.AddDbContext<GenoomSimpsonsContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
+            // Standard MVC
             services.AddMvc();
 
+            // Swagger documentation API
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "Genoom Simpsons Tree", Version = "v1" });
             });
+
+            // The database provider (strategy) to use to access the data.
+            services.AddSingleton<IPeopleRepository>(Support.PeopleRepositoryFactory.Create(Configuration));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,7 +51,7 @@ namespace Genoom.Simpsons.Web
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Genoom Simpsons Tree v1");
             });
 
-            // The default routes
+            // The default routes, by default if does not exist (404) we want to provide a nice response.
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

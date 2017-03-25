@@ -44,7 +44,7 @@ namespace Genoom.Simpsons.Repository.MongoDb
             throw new NotImplementedException();
         }
 
-        public async Task<Guid> AddChildAsync(Person child, Guid personId)
+        public async Task<Guid> AddChildAsync(Guid parentId, Person child)
         {
             throw new NotImplementedException();
         }

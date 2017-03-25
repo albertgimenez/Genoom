@@ -14,6 +14,6 @@ namespace Genoom.Simpsons.Repository
         Task<bool> HasPartnerAsync(Guid id);
 
         // Update
-        Task<Guid> AddChildAsync(Person child, Guid personId);
+        Task<Guid> AddChildAsync(Guid parentId, Person child);
     }
 }

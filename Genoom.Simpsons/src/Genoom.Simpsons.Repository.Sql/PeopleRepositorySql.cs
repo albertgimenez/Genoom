@@ -85,7 +85,7 @@ namespace Genoom.Simpsons.Repository.Sql
             });
         }
 
-        public async Task<Guid> AddChildAsync(Person child, Guid parentId)
+        public async Task<Guid> AddChildAsync(Guid parentId, Person child)
         {
             return await WithConnection(async connection =>
             {

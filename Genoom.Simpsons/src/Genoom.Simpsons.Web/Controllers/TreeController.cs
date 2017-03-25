@@ -1,18 +1,41 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Genoom.Simpsons.Model;
+using Microsoft.Extensions.Logging;
+using Genoom.Simpsons.Repository;
 
 namespace Genoom.Simpsons.Web.Controllers
 {
     [Route("[controller]")]
     public class TreeController : Controller
     {
-        // GET people/5
-        [HttpGet("{id}")]
-        public IEnumerable<Person> Get([FromQuery]Guid id)
+        // Properties
+        protected ILogger Logger { get; }
+        protected IPeopleRepository RepositoryService { get; }
+
+        // Ctor
+        public TreeController(ILogger logger, IPeopleRepository repositoryService)
         {
-            return new Person[10];
+            Logger = logger;
+            RepositoryService = repositoryService;
+        }
+
+        //Public Methods
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(Guid id)
+        {
+            try
+            {
+                var result = await RepositoryService.GetTreeAsync(id);
+                return result != null
+                    ? (IActionResult)Ok(result)
+                    : NotFound(id);
+            }
+            catch (Exception exception)
+            {
+                Logger.LogError(exception.Message);
+                throw;
+            }
         }
     }
 }

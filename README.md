@@ -18,8 +18,8 @@ You can locate it in the doc folder: https://github.com/albertgimenez/Genoom/tre
 ## Application Settings and Configuration
 In the Genoom.Simpsons.Web, open the file appSettings.json, some key points of it are:
 * Decide wich strategy we want to use (database):
- * Sql: to use SQL Server, please check the SqlConnection settings as well.
- * MongoDb: to use MongoDb, please check the MongoDbConnection settings and you will need also to review the MongoDbConfig section as well.
+ * **Sql**: to use SQL Server, please check the SqlConnection settings as well.
+ * **MongoDb**: to use MongoDb, please check the MongoDbConnection settings and you will need also to review the MongoDbConfig section as well.
 
 ```json
 {
@@ -47,10 +47,10 @@ In the Genoom.Simpsons.Web, open the file appSettings.json, some key points of i
 ## Startup and DI services registration
 To change and configure the DI services injectedand the default api routes configuration check the Genoom.Simpsons.Web, open the file Startup.cs, some key points of it are:
 
-*ConfigureServices: here we add and register the services in the DI, we rely on the new but very simple DI offered by Microsoft.
+* **ConfigureServices**: here we add and register the services in the DI, we rely on the new but very simple DI offered by Microsoft.
  * The Swagger Documentation service is added here
  * The repository (sql, mongodb) instance is added here.
-* Configure: here we configure the services:
+* **Configure**: here we configure the services:
  * The Swagger path and endpoint
  * We set a default error controller for requests that are nt any of the valid controllers developed (for the 404 errors)
 

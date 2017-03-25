@@ -1,14 +1,17 @@
 # Genoom Simpsons Tree Sample
 
-##Requisites
+## Requisites
 •	Net core 1.0
 •	Sql Server or MongoDb servers
 •	IIS express or IIS to host and launch the website.
 
-##Where to download the code
+## Where to download the code
 https://github.com/albertgimenez/Genoom
 
-##Application Settings and Configuration
+## Full documentation
+You can locate it in the doc folder.
+
+## Application Settings and Configuration
 In the Genoom.Simpsons.Web, open the file appSettings.json, some key points of it are:
 •	Decide wich strategy we want to use (database):
    o	Sql: to use SQL Server, please check the SqlConnection settings as well.
@@ -37,7 +40,7 @@ In the Genoom.Simpsons.Web, open the file appSettings.json, some key points of i
 </code>
 
  
-##Startup and DI services registration
+## Startup and DI services registration
 To change and configure the DI services injectedand the default api routes configuration check the Genoom.Simpsons.Web, open the file Startup.cs, some key points of it are:
 
 •	ConfigureServices: here we add and register the services in the DI, we rely on the new but very simple DI offered by Microsoft.
@@ -61,8 +64,9 @@ public void ConfigureServices(IServiceCollection services)
         // The database provider (strategy) to use to access the data.
         services.AddSingleton<IPeopleRepository>(Support.PeopleRepositoryFactory.Create(Configuration));
 }
-
+</code>
  
+<code>
 public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
 {
         …
@@ -87,7 +91,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 }
 </code>
 
-##Routes
+## Routes
 For this excersice is set that the api calls are direct to the controllers like /people instead of /api/v1/people
 I’ve followed the route pattern, but if there is intention to continue evolving this project, we should change it to follow the Web Api good practice: /api/v{xx}/controller
 This will make easier to version the api and handle changes on it while keeping compatibility backwards. 
@@ -97,5 +101,7 @@ There are two routes levels:
 •	Per controller routes: this allows clear and fine grained control over the routes.
     For this exercise because there are few controllers I thought is the best option because it’s clear. You will see that the controller has this decorator in the class declaration:
 
+<code>
 [Route("[controller]")]
+</code>
 

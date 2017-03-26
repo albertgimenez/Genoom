@@ -78,7 +78,7 @@ namespace Genoom.Simpsons.Repository.Sql
                     sql: "SELECT COUNT(*) FROM PersonRelationshipView WHERE Name LIKE @Id AND RelationShip = @Relationship",
                     param: parameters);
 
-                return partnersCount != null;
+                return partnersCount != null && (int)partnersCount > 0;
             });
         }
 

@@ -12,14 +12,15 @@ https://github.com/albertgimenez/Genoom
 You can locate it in the doc folder: https://github.com/albertgimenez/Genoom/tree/master/Genoom.Simpsons/doc
 
 ## Unsupported features (TODOs)
-* MongoDb repository implementation
-* Upload to Azure
+* MongoDb repository implementation + server execution over node.js
+* Improve tests (fix runtime issues with dotnet test on mstest)
 
 ## Application Settings and Configuration
 In the Genoom.Simpsons.Web, open the file appSettings.json, some key points of it are:
 * Decide wich strategy we want to use (database):
  * **Sql**: to use SQL Server, please check the SqlConnection settings as well.
  * **MongoDb**: to use MongoDb, please check the MongoDbConnection settings and you will need also to review the MongoDbConfig section as well.
+ * **Azure**: to use SQL Server Azure instead of local server, please check the SqlConnection settings as well.
 
 ```json
 {
@@ -43,11 +44,28 @@ In the Genoom.Simpsons.Web, open the file appSettings.json, some key points of i
 }
 ```
 
+## Data
+Currently we return some values still as integers, instead of string:
+```json
+Sex
+{
+  Male: 0,
+  Female: 1
+}
+
+Relationship
+{
+ Partner: 0,
+ Parent: 1,
+ Sibling: 2,
+ Child: 3
+}
+```
  
 ## Startup and DI services registration
 To change and configure the DI services injectedand the default api routes configuration check the Genoom.Simpsons.Web, open the file Startup.cs, some key points of it are:
 
-* **ConfigureServices**: here we add and register the services in the DI, we rely on the new but very simple DI offered by Microsoft.
+* **ConfigureServices**: here we add and register the services in the DI, we rely on the new (but very simple) DI offered by Microsoft.
  * The Swagger Documentation service is added here
  * The repository (sql, mongodb) instance is added here.
 * **Configure**: here we configure the services:

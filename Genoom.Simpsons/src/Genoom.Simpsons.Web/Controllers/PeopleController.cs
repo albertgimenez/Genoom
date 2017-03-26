@@ -71,7 +71,7 @@ namespace Genoom.Simpsons.Web.Controllers
 
                 var result = await RepositoryService.AddChildAsync(id, body);
                 return !string.IsNullOrEmpty(result)
-                    ? (IActionResult)Created(GetNewChildPath(result), result)
+                    ? (IActionResult)Created(GetNewChildPath(body), result)
                     : NoContent();
             }
             catch (Exception exception)
@@ -83,9 +83,10 @@ namespace Genoom.Simpsons.Web.Controllers
         }
 
         // Private Methods
-        private string GetNewChildPath(string newChildId)
+        private string GetNewChildPath(Person newChildId)
         {
-            return Request.PathBase.Add(newChildId);
+            // /people/id/children -> we get the controller id to generate something like: /people/newid
+            return Request.Path.Value.Split('/')[1] + $"/{newChildId.Name}";
         }
     }
 }

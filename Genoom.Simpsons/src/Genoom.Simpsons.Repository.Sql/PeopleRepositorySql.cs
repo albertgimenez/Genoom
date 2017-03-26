@@ -1,4 +1,5 @@
-﻿using Dapper;
+﻿using System;
+using Dapper;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -91,12 +92,12 @@ namespace Genoom.Simpsons.Repository.Sql
                 parameters.Add("@LastName", child.LastName, DbType.String);
                 parameters.Add("@BirthDate", child.BirthDate, DbType.Date);
                 parameters.Add("@Sex", (short)child.Sex, DbType.Int16);
-                parameters.Add("@PhotoFileName", child.PhotoFileName, DbType.Int16);
+                parameters.Add("@PhotoFileName", child.PhotoFileName, DbType.String);
 
-                return await connection.ExecuteScalarAsync<string>(
+                return (await connection.ExecuteScalarAsync<Guid>(
                     sql: "AddChild",
                     param: parameters,
-                    commandType: CommandType.StoredProcedure);
+                    commandType: CommandType.StoredProcedure)).ToString();
             });
         }
 

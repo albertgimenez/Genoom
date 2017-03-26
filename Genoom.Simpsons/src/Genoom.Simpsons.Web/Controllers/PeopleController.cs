@@ -63,8 +63,10 @@ namespace Genoom.Simpsons.Web.Controllers
             try
             {
                 if (!await RepositoryService.HasPartnerAsync(id)) {
-                    //Logger.LogError($"The person with <{id}> has no partner. Associate one to it and try to add the child again.");
-                    return new StatusCodeResult((int)HttpStatusCode.PreconditionFailed);
+                    return StatusCode(
+                        (int)HttpStatusCode.PreconditionFailed,
+                        ErrorResultHelper.Create(new Exception($"The person <{id}> has no partner. Associate one to it and try to add the child again."), HttpStatusCode.PreconditionFailed)
+                    );
                 }
 
                 var result = await RepositoryService.AddChildAsync(id, body);

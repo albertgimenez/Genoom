@@ -1,7 +1,7 @@
 ﻿using Dapper;
-using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Threading.Tasks;
 using Genoom.Simpsons.Model;
 
@@ -55,8 +55,8 @@ namespace Genoom.Simpsons.Repository.Sql
                 parameters.Add("@Id", id, DbType.String);
 
                 return await connection.QuerySingleOrDefaultAsync<PersonWithParents>(
-                    sql: "SELECT RelatedPersonId Id, RelatedName + ' ' + RelatedLastName Name " +
-                         "FROM PersonRelationshipView " +
+                    sql: "SELECT Id, Name " +
+                         "FROM Person " +
                          "WHERE Name LIKE @Id",
                     param: parameters);
             });
@@ -74,7 +74,7 @@ namespace Genoom.Simpsons.Repository.Sql
                 parameters.Add("@Relationship", (short)RelationshipEnum.Partner, DbType.Int16);
 
                 var partnersCount = await connection.ExecuteScalarAsync(
-                    sql: "SELECT COUNT(*) FROM PersonFamily WHERE Name LIKE @Id AND RelationShip = @Relationship",
+                    sql: "SELECT COUNT(*) FROM PersonRelationshipView WHERE Name LIKE @Id AND RelationShip = @Relationship",
                     param: parameters);
 
                 return partnersCount != null;
@@ -106,20 +106,19 @@ namespace Genoom.Simpsons.Repository.Sql
             var parents = await GetParentsSql(id);
 
             // Base case
-            if (parents == null)
+            if (!parents.Any())
             {
                 return null;
             }
 
             // Inductive Case
-            var parentsList = new List<PersonWithParents>();
             foreach (var parent in parents)
             {
                 var parentsOfparent = await GetParentsRecursiveAsync(parent.Name);
-                if (parentsOfparent != null) { parentsList.AddRange(parentsOfparent); }
+                if (parentsOfparent != null) { parent.Parents = new List<PersonWithParents>(parentsOfparent); }
             }
 
-            return parentsList;
+            return parents;
         }
 
         private async Task<IEnumerable<PersonWithParents>> GetParentsSql(string id)

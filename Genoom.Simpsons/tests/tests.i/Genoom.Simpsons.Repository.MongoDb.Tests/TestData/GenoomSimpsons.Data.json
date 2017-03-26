@@ -1,0 +1,99 @@
+﻿{
+"SimpsonsFamilyTree": [
+  {
+    "_id": {
+      "$oid": "58d0532cf6e32133a852510a"
+    },
+    "name": "Homer",
+    "lastname": "Simpson",
+    "birthdate": "1977-09-17 00:00:00.000",
+    "sex": 0,
+    "photoFileName": "Homer.jpg",
+    "familyMembers": [
+      {
+        "name": "Abraham",
+        "lastname": "Simpson",
+        "relationship": 1,
+        "id": ""
+      },
+      {
+        "name": "Penelope",
+        "lastname": "Olsen",
+        "relationship": 1,
+        "id": ""
+      },
+      {
+        "name": "Marge",
+        "lastname": "Bouvier",
+        "relationship": 0,
+        "id": "58d2e8f8f6e32133a852510c"
+      },
+      {
+        "name": "Bart",
+        "lastname": "Simpson",
+        "relationship": 3,
+        "id": ""
+      },
+      {
+        "name": "Lisa",
+        "lastname": "Simpson",
+        "relationship": 3,
+        "id": ""
+      },
+      {
+        "name": "Maggie",
+        "lastname": "Simpson",
+        "relationship": 3,
+        "id": ""
+      }
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "58d2e8f8f6e32133a852510c"
+    },
+    "name": "Marge",
+    "lastname": "Bouvier",
+    "birthdate": "1979-02-21 00:00:00.000",
+    "sex": "1",
+    "photoFileName": "Marge.jpg",
+    "familyMembers": [
+      {
+        "name": "Clancy",
+        "lastname": "Bouvier",
+        "relationship": 1,
+        "id": ""
+      },
+      {
+        "name": "Jacqueline",
+        "lastname": "Gurney",
+        "relationship": 1,
+        "id": ""
+      },
+      {
+        "name": "Homer",
+        "lastname": "Simpson",
+        "relationship": 0,
+        "id": "58d0532cf6e32133a852510a"
+      },
+      {
+        "name": "Bart",
+        "lastname": "Simpson",
+        "relationship": 3,
+        "id": ""
+      },
+      {
+        "name": "Lisa",
+        "lastname": "Simpson",
+        "relationship": 3,
+        "id": ""
+      },
+      {
+        "name": "Maggie",
+        "lastname": "Simpson",
+        "relationship": 3,
+        "id": ""
+      }
+    ]
+  }]
+}

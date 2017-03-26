@@ -5,7 +5,7 @@
     "dotnet-test-mstest": "1.1.2-preview",
     "Genoom.Simpsons.Model": "1.0.0-*",
     "Genoom.Simpsons.Web": "1.0.0-*",
-    "Moq": "4.7.7",
+    "Moq": "4.7.8",
     "MSTest.TestAdapter": "1.1.13",
     "MSTest.TestFramework": "1.1.13"
   },

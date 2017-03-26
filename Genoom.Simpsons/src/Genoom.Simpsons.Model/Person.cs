@@ -15,7 +15,7 @@ namespace Genoom.Simpsons.Model
         [Key]
         public string Name { get; set; }
         public string LastName { get; set; }
-        public DateTime Birthdate { get; set; }
+        public DateTime BirthDate { get; set; }
         public SexEnum Sex { get; set; }
         public string PhotoFileName { get; set; }
     }

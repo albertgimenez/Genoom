@@ -221,7 +221,7 @@ namespace Genoom.Simpsons.Repository.Sql.Tests
                 LastName = "TestLastName",
                 Sex = SexEnum.Male,
                 PhotoFileName = "TestPhoto.jpg",
-                Birthdate = new DateTime(1992, 07, 24)
+                BirthDate = new DateTime(1992, 07, 24)
             };
         }
     }

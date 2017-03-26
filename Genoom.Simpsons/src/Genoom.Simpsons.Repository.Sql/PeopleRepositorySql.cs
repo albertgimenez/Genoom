@@ -40,7 +40,7 @@ namespace Genoom.Simpsons.Repository.Sql
                 parameters.Add("@Id", id, DbType.String);
 
                 return await connection.QueryAsync<PersonFamily>(
-                    sql: "SELECT RelatedPersonId Id, RelatedName Name, RelatedLastName LastName, Birthdate, Sex, PhotoFileName, Relationship " +
+                    sql: "SELECT RelatedPersonId Id, RelatedName Name, RelatedLastName LastName, BirthDate, Sex, PhotoFileName, Relationship " +
                          "FROM PersonRelationshipView " +
                          "WHERE Name LIKE @Id",
                     param: parameters);
@@ -89,7 +89,7 @@ namespace Genoom.Simpsons.Repository.Sql
                 parameters.Add("@Parent", parentId, DbType.String);
                 parameters.Add("@Name", child.Name, DbType.String);
                 parameters.Add("@LastName", child.LastName, DbType.String);
-                parameters.Add("@Birthdate", child.Birthdate, DbType.Date);
+                parameters.Add("@BirthDate", child.BirthDate, DbType.Date);
                 parameters.Add("@Sex", (short)child.Sex, DbType.Int16);
                 parameters.Add("@PhotoFileName", child.PhotoFileName, DbType.Int16);
 

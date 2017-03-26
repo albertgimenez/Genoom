@@ -57,7 +57,6 @@ namespace Genoom.Simpsons.Web.Controllers
             }
         }
 
-        // POST api/values
         [HttpPost("{id}/children")]
         public async Task<IActionResult> Post(string id, [FromBody]Person body)
         {
@@ -81,6 +80,7 @@ namespace Genoom.Simpsons.Web.Controllers
             }
         }
 
+        // Private Methods
         private string GetNewChildPath(string newChildId)
         {
             return Request.PathBase.Add(newChildId);

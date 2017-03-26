@@ -3,7 +3,7 @@
     Id uniqueidentifier DEFAULT NEWID(),
     Name varchar(100) UNIQUE NOT NULL,
     LastName varchar(100),
-    Birthdate datetime,
+    BirthDate datetime,
     Sex tinyint NOT NULL,
     PhotoFileName varchar(255),
 
@@ -50,14 +50,14 @@ BEGIN
         DECLARE @ParentId uniqueidentifier = (SELECT TOP 1 Id FROM Person WHERE Name LIKE @Parent);
 
         -- Add the new child
-        INSERT INTO Person (Id, Name, LastName, Birthdate, Sex, PhotoFileName)
+        INSERT INTO Person (Id, Name, LastName, BirthDate, Sex, PhotoFileName)
         OUTPUT inserted.Id
         VALUES
         (
             @childId,
             @Name,
             @Lastname,
-            @Birthdate,
+            @BirthDate,
             @Sex,
             @PhotoFileName
         );

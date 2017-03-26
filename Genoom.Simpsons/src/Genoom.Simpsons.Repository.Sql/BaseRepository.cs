@@ -30,7 +30,7 @@ namespace Genoom.Simpsons.Repository.Sql
             }
             catch (SqlException ex)
             {
-                throw new Exception($"{GetType().FullName}.WithConnection() experienced a SQL exception.", ex);
+                throw new Exception($"{GetType().FullName}.WithConnection() experienced a SQL exception: {ex.Message}", ex);
             }
         }
     }

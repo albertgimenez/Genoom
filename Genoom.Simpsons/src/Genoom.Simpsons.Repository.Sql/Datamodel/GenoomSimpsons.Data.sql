@@ -1,4 +1,4 @@
-﻿INSERT INTO Person (Id, Name, LastName, Birthdate, Sex)	VALUES
+﻿INSERT INTO Person (Id, Name, LastName, BirthDate, Sex)	VALUES
 	(CONVERT(uniqueidentifier, 'AE019609-99E0-4EF5-85BB-AD90DC302E70'), 'Orville', 'Simpson', 1898-03-02, 0),
 	(CONVERT(uniqueidentifier, 'DEB11097-3E77-4152-9FAB-CF780D79C55B'), 'Yuma', 'Hickman', 1900-03-02, 1),
 	(CONVERT(uniqueidentifier, '55FD1F7F-053E-41C8-89EB-00C6E072E3E4'), 'Pépé', 'Bouvier', 1900-05-23, 0),

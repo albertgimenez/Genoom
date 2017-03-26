@@ -39,7 +39,7 @@ namespace Genoom.Simpsons.Repository.Sql.Tests
             var testObject = new PeopleRepositorySql(ConnectionstringTest);
 
             //ACT
-            var testData = await testObject.GetPersonAsync(Guid.Parse("cb840eba-90bf-4d1f-8d3c-3b803f265959")); //Homer Simpson
+            var testData = await testObject.GetPersonAsync("Homer");
 
             //ASSERT
             Assert.IsNotNull(testData);
@@ -59,7 +59,7 @@ namespace Genoom.Simpsons.Repository.Sql.Tests
             var testObject = new PeopleRepositorySql(ConnectionstringTest);
 
             //ACT
-            var testData = await testObject.GetFamilyAsync(Guid.Parse("cb840eba-90bf-4d1f-8d3c-3b803f265959")); //Homer Simpson
+            var testData = await testObject.GetFamilyAsync("Homer");
 
             //ASSERT
             Assert.IsNotNull(testData);
@@ -81,7 +81,7 @@ namespace Genoom.Simpsons.Repository.Sql.Tests
             var testObject = new PeopleRepositorySql(ConnectionstringTest);
 
             //ACT
-            var testData = await testObject.GetTreeAsync(Guid.Parse("cb840eba-90bf-4d1f-8d3c-3b803f265959")); //Homer Simpson
+            var testData = await testObject.GetTreeAsync("Homer");
 
             //ASSERT
             Assert.IsNotNull(testData);
@@ -104,7 +104,7 @@ namespace Genoom.Simpsons.Repository.Sql.Tests
             var testObject = new PeopleRepositorySql(ConnectionstringTest);
 
             //ACT
-            var testData = await testObject.HasPartnerAsync(Guid.Parse("cb840eba-90bf-4d1f-8d3c-3b803f265959")); //Homer Simpson
+            var testData = await testObject.HasPartnerAsync("Homer");
 
             //ASSERT
             Assert.IsTrue(testData);
@@ -122,7 +122,7 @@ namespace Genoom.Simpsons.Repository.Sql.Tests
             var testObject = new PeopleRepositorySql(ConnectionstringTest);
 
             //ACT
-            var testData = await testObject.HasPartnerAsync(Guid.Parse("3AFCDFF6-275A-42B3-AE03-C3682EEE3E23")); //Lisa Simpson
+            var testData = await testObject.HasPartnerAsync("Lisa");
 
             //ASSERT
             Assert.IsFalse(testData);
@@ -141,10 +141,11 @@ namespace Genoom.Simpsons.Repository.Sql.Tests
             var testPerson = GetTestPerson();
 
             //ACT
-            var testData = await testObject.AddChildAsync(Guid.Parse("cb840eba-90bf-4d1f-8d3c-3b803f265959"), testPerson); //Homer Simpson
+            var testData = await testObject.AddChildAsync("Homer", testPerson);
 
             //ASSERT
             Assert.IsNotNull(testData);
+            Assert.IsFalse(Guid.Parse(testData) != Guid.Empty);
         }
 
         /// <summary>
@@ -160,10 +161,10 @@ namespace Genoom.Simpsons.Repository.Sql.Tests
             var testPerson = GetTestPerson();
 
             //ACT
-            var testData = await testObject.AddChildAsync(Guid.Parse("3AFCDFF6-275A-42B3-AE03-C3682EEE3E23"), testPerson); //Lisa Simpson
+            var testData = await testObject.AddChildAsync("Lisa", testPerson);
 
             //ASSERT
-            Assert.IsNotNull(testData);
+            Assert.IsNull(testData);
         }
 
 

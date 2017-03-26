@@ -21,7 +21,7 @@ namespace Genoom.Simpsons.Web.Controllers
 
         //Public Methods
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(Guid id)
+        public async Task<IActionResult> Get(string id)
         {
             try
             {

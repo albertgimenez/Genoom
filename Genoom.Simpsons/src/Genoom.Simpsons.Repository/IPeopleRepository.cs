@@ -8,12 +8,12 @@ namespace Genoom.Simpsons.Repository
     public interface IPeopleRepository
     {
         // Read
-        Task<Person> GetPersonAsync(Guid id);
-        Task<IEnumerable<PersonFamily>> GetFamilyAsync(Guid id);
-        Task<PersonWithParents> GetTreeAsync(Guid id);
-        Task<bool> HasPartnerAsync(Guid id);
+        Task<Person> GetPersonAsync(string id);
+        Task<IEnumerable<PersonFamily>> GetFamilyAsync(string id);
+        Task<PersonWithParents> GetTreeAsync(string id);
+        Task<bool> HasPartnerAsync(string id);
 
         // Update
-        Task<Guid> AddChildAsync(Guid parentId, Person child);
+        Task<string> AddChildAsync(string parentId, Person child);
     }
 }

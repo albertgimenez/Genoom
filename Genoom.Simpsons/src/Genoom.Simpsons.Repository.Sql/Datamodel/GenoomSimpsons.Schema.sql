@@ -1,7 +1,7 @@
 ﻿CREATE TABLE Person
 (
     Id uniqueidentifier DEFAULT NEWID(),
-    Name varchar(100) NOT NULL,
+    Name varchar(100) UNIQUE NOT NULL,
     LastName varchar(100),
     Birthdate datetime,
     Sex tinyint NOT NULL,
@@ -34,7 +34,7 @@ CREATE VIEW PersonRelationshipView AS
 GO
 
 CREATE PROCEDURE [dbo].[AddChild]
-    @ParentId uniqueidentifier,
+    @Parent varchar(100),
     @Name varchar(100),
     @LastName varchar(100),
     @Birthdate datetime,
@@ -47,6 +47,7 @@ BEGIN
     BEGIN TRY
         BEGIN TRANSACTION;
         DECLARE @childId uniqueidentifier = NEWID();
+        DECLARE @ParentId uniqueidentifier = (SELECT TOP 1 Id FROM Person WHERE Name LIKE @Parent);
 
         -- Add the new child
         INSERT INTO Person (Id, Name, LastName, Birthdate, Sex, PhotoFileName)

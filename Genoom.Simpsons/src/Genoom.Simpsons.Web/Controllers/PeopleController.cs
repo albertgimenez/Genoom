@@ -22,7 +22,7 @@ namespace Genoom.Simpsons.Web.Controllers
 
         //Public Methods
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(Guid id)
+        public async Task<IActionResult> Get(string id)
         {
             try
             {
@@ -40,7 +40,7 @@ namespace Genoom.Simpsons.Web.Controllers
         }
 
         [HttpGet("{id}/family")]
-        public async Task<IActionResult> GetFamily(Guid id)
+        public async Task<IActionResult> GetFamily(string id)
         {
             try
             {
@@ -59,7 +59,7 @@ namespace Genoom.Simpsons.Web.Controllers
 
         // POST api/values
         [HttpPost("{id}/children")]
-        public async Task<IActionResult> Post(Guid id, [FromBody]Person body)
+        public async Task<IActionResult> Post(string id, [FromBody]Person body)
         {
             try
             {
@@ -69,7 +69,7 @@ namespace Genoom.Simpsons.Web.Controllers
                 }
 
                 var result = await RepositoryService.AddChildAsync(id, body);
-                return result != Guid.Empty
+                return !string.IsNullOrEmpty(result)
                     ? (IActionResult)Created(GetNewChildPath(result), result)
                     : NoContent();
             }
@@ -81,9 +81,9 @@ namespace Genoom.Simpsons.Web.Controllers
             }
         }
 
-        private string GetNewChildPath(Guid newChildId)
+        private string GetNewChildPath(string newChildId)
         {
-            return Request.PathBase.Add(newChildId.ToString());
+            return Request.PathBase.Add(newChildId);
         }
     }
 }

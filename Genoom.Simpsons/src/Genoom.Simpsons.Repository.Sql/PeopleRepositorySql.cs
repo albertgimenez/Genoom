@@ -19,85 +19,81 @@ namespace Genoom.Simpsons.Repository.Sql
         }
 
         // Public Methods
-        public async Task<Person> GetPersonAsync(Guid id)
+        public async Task<Person> GetPersonAsync(string id)
         {
             return await WithConnection(async connection =>
             {
                 var parameters = new DynamicParameters();
-                parameters.Add("@Id", id, DbType.Guid);
+                parameters.Add("@Id", id, DbType.String);
 
                 return await connection.QuerySingleOrDefaultAsync<Person>(
-                    sql: "SELECT * FROM Person WHERE Id = @Id",
-                    param: parameters,
-                    commandType: CommandType.Text);
+                    sql: "SELECT * FROM Person WHERE Name LIKE @Id",
+                    param: parameters);
             });
         }
 
-        public async Task<IEnumerable<PersonFamily>> GetFamilyAsync(Guid id)
+        public async Task<IEnumerable<PersonFamily>> GetFamilyAsync(string id)
         {
             return await WithConnection(async connection =>
             {
                 var parameters = new DynamicParameters();
-                parameters.Add("@Id", id, DbType.Guid);
+                parameters.Add("@Id", id, DbType.String);
 
                 return await connection.QueryAsync<PersonFamily>(
                     sql: "SELECT RelatedPersonId Id, RelatedName Name, RelatedLastName LastName, Birthdate, Sex, PhotoFileName, Relationship " +
                          "FROM PersonRelationshipView " +
-                         "WHERE PersonId = @Id",
-                    param: parameters,
-                    commandType: CommandType.Text);
+                         "WHERE Name LIKE @Id",
+                    param: parameters);
             });
         }
 
-        public async Task<PersonWithParents> GetTreeAsync(Guid id)
+        public async Task<PersonWithParents> GetTreeAsync(string id)
         {
             var topPerson = await WithConnection(async connection =>
             {
                 var parameters = new DynamicParameters();
-                parameters.Add("@Id", id, DbType.Guid);
+                parameters.Add("@Id", id, DbType.String);
 
                 return await connection.QuerySingleOrDefaultAsync<PersonWithParents>(
                     sql: "SELECT RelatedPersonId Id, RelatedName + ' ' + RelatedLastName Name " +
                          "FROM PersonRelationshipView " +
-                         "WHERE PersonId = @Id",
-                    param: parameters,
-                    commandType: CommandType.Text);
+                         "WHERE Name LIKE @Id",
+                    param: parameters);
             });
 
             topPerson.Parents = await GetParentsRecursiveAsync(id);
             return topPerson;
         }
 
-        public async Task<bool> HasPartnerAsync(Guid id)
+        public async Task<bool> HasPartnerAsync(string id)
         {
             return await WithConnection(async connection =>
             {
                 var parameters = new DynamicParameters();
-                parameters.Add("@Id", id, DbType.Guid);
+                parameters.Add("@Id", id, DbType.String);
                 parameters.Add("@Relationship", (short)RelationshipEnum.Partner, DbType.Int16);
 
                 var partnersCount = await connection.ExecuteScalarAsync(
-                    sql: "SELECT COUNT(*) FROM PersonFamily WHERE PersonId = @Id AND RelationShip = @Relationship",
-                    param: parameters,
-                    commandType: CommandType.Text);
+                    sql: "SELECT COUNT(*) FROM PersonFamily WHERE Name LIKE @Id AND RelationShip = @Relationship",
+                    param: parameters);
 
                 return partnersCount != null;
             });
         }
 
-        public async Task<Guid> AddChildAsync(Guid parentId, Person child)
+        public async Task<string> AddChildAsync(string parentId, Person child)
         {
             return await WithConnection(async connection =>
             {
                 var parameters = new DynamicParameters();
-                parameters.Add("@ParentId", parentId, DbType.Guid);
+                parameters.Add("@Parent", parentId, DbType.String);
                 parameters.Add("@Name", child.Name, DbType.String);
                 parameters.Add("@LastName", child.LastName, DbType.String);
                 parameters.Add("@Birthdate", child.Birthdate, DbType.Date);
                 parameters.Add("@Sex", (short)child.Sex, DbType.Int16);
                 parameters.Add("@PhotoFileName", child.PhotoFileName, DbType.Int16);
 
-                return await connection.ExecuteScalarAsync<Guid>(
+                return await connection.ExecuteScalarAsync<string>(
                     sql: "AddChild",
                     param: parameters,
                     commandType: CommandType.StoredProcedure);
@@ -105,7 +101,7 @@ namespace Genoom.Simpsons.Repository.Sql
         }
 
         // Private Methods
-        private async Task<IEnumerable<PersonWithParents>> GetParentsRecursiveAsync(Guid id)
+        private async Task<IEnumerable<PersonWithParents>> GetParentsRecursiveAsync(string id)
         {
             var parents = await GetParentsSql(id);
 
@@ -119,27 +115,27 @@ namespace Genoom.Simpsons.Repository.Sql
             var parentsList = new List<PersonWithParents>();
             foreach (var parent in parents)
             {
-                var parentsOfparent = await GetParentsRecursiveAsync(parent.Id);
+                var parentsOfparent = await GetParentsRecursiveAsync(parent.Name);
                 if (parentsOfparent != null) { parentsList.AddRange(parentsOfparent); }
             }
 
             return parentsList;
         }
 
-        private async Task<IEnumerable<PersonWithParents>> GetParentsSql(Guid id)
+        private async Task<IEnumerable<PersonWithParents>> GetParentsSql(string id)
         {
             var parents = await WithConnection(async connection =>
             {
                 var parameters = new DynamicParameters();
-                parameters.Add("Id", id, DbType.Guid);
-                parameters.Add("RelationShip", (short) RelationshipEnum.Parent, DbType.Int16);
+                parameters.Add("@Id", id, DbType.String);
+                parameters.Add("@RelationShip", (short) RelationshipEnum.Parent, DbType.Int16);
 
+                //Note: I use Name = @Id instead of Name LIKE @Id because is more performant and the id will be providen with the exact Name.
                 return await connection.QueryAsync<PersonWithParents>(
-                    sql: "SELECT RelatedPersonId Id, RelatedName + ' ' + RelatedLastName Name " +
+                    sql: "SELECT RelatedPersonId Id, RelatedName Name " +
                          "FROM PersonRelationshipView " +
-                         "WHERE PersonId = @Id AND Relationship = @RelationShip",
-                    param: parameters,
-                    commandType: CommandType.Text);
+                         "WHERE Name = @Id AND Relationship = @RelationShip",
+                    param: parameters);
             });
 
             return parents;

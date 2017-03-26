@@ -22,29 +22,29 @@ namespace Genoom.Simpsons.Repository.MongoDb
         }
 
         // Public Methods
-        public async Task<Person> GetPersonAsync(Guid id)
+        public async Task<Person> GetPersonAsync(string id)
         {
             var collection = GetMongoDbCollection();
 
-            return await collection.Find(x => x.Id == id).FirstOrDefaultAsync();
+            return await collection.Find(x => x.Name == id).FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<PersonFamily>> GetFamilyAsync(Guid id)
+        public async Task<IEnumerable<PersonFamily>> GetFamilyAsync(string id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<PersonWithParents> GetTreeAsync(Guid id)
+        public async Task<PersonWithParents> GetTreeAsync(string id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<bool> HasPartnerAsync(Guid id)
+        public async Task<bool> HasPartnerAsync(string id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<Guid> AddChildAsync(Guid parentId, Person child)
+        public async Task<string> AddChildAsync(string parentId, Person child)
         {
             throw new NotImplementedException();
         }

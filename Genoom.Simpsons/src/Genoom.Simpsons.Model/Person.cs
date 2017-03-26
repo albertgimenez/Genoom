@@ -11,8 +11,8 @@ namespace Genoom.Simpsons.Model
 
     public class Person
     {
-        [Key]
         public Guid Id { get; set; }
+        [Key]
         public string Name { get; set; }
         public string LastName { get; set; }
         public DateTime Birthdate { get; set; }

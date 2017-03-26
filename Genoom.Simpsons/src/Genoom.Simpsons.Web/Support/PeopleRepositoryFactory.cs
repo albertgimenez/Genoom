@@ -14,8 +14,10 @@ namespace Genoom.Simpsons.Web.Support
 
             switch (strategyName.ToLower())
             {
+                case "azure":
+                    return new PeopleRepositorySql(config.GetConnectionString("SqlConnectionAzure"));
                 case "sql":
-                    return new PeopleRepositorySql(config.GetConnectionString("SqlConnection"));
+                    return new PeopleRepositorySql(config.GetConnectionString("SqlConnectionLocal"));
                 case "mongodb":
                     return new PeopleRepositoryMongoDb(
                         connectionString: config.GetConnectionString("MongoDbConnection"),

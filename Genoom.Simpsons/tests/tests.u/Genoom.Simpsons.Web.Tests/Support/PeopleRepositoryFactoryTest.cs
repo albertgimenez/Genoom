@@ -11,6 +11,26 @@ namespace Genoom.Simpsons.Web.Tests.Support
     {
         // Public Methods
         /// <summary>
+        /// Intention: Test that we can get a Sql Azure Repository
+        /// Expected: Success
+        /// </summary>
+        /// <returns></returns>
+        [TestMethod]
+        public void CreateAzureRepositoryOkTest()
+        {
+            //ARRANGE
+            var testConfig = TestConfiguration();
+            testConfig.GetSection("DbStrategy").Value = "Azure";
+
+            //ACT
+            var testData = PeopleRepositoryFactory.Create(testConfig);
+
+            //ASSERT
+            Assert.IsNotNull(testData);
+            Assert.IsTrue(testData is PeopleRepositorySql);
+        }
+
+        /// <summary>
         /// Intention: Test that we can get a Sql Repository
         /// Expected: Success
         /// </summary>
@@ -30,7 +50,6 @@ namespace Genoom.Simpsons.Web.Tests.Support
             Assert.IsTrue(testData is PeopleRepositorySql);
         }
 
-        // Public Methods
         /// <summary>
         /// Intention: Test that we can get a Sql Repository
         /// Expected: Success

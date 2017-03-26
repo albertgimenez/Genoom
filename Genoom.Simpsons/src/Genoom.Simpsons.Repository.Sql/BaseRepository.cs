@@ -14,6 +14,7 @@ namespace Genoom.Simpsons.Repository.Sql
             _connectionString = connectionString;
         }
 
+        //This method is taken from: http://www.joesauve.com/async-dapper-and-async-sql-connection-management/
         protected async Task<T> WithConnection<T>(Func<IDbConnection, Task<T>> getData)
         {
             try

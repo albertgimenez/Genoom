@@ -62,7 +62,8 @@ namespace Genoom.Simpsons.Repository.Sql
                     param: parameters);
             });
 
-            topPerson.Parents = await GetParentsRecursiveAsync(id);
+            if (topPerson != null) { topPerson.Parents = await GetParentsRecursiveAsync(id); }
+
             return topPerson;
         }
 

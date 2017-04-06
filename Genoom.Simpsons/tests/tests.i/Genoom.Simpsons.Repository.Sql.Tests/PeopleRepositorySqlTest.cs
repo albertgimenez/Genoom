@@ -18,7 +18,7 @@ namespace Genoom.Simpsons.Repository.Sql.Tests
 
         // Ctor
         [ClassInitialize]
-        public static void ClassInitialize()
+        public static void ClassInitialize(TestContext context)
         {
             GetTestConnectionString();
             CleanDb();
@@ -186,10 +186,10 @@ namespace Genoom.Simpsons.Repository.Sql.Tests
                 connection.Open();
                 var dbCommand = connection.CreateCommand();
 
-                dbCommand.CommandText = "TRUNCATE TABLE PersonFamily;";
+                dbCommand.CommandText = "DELETE FROM PersonFamily;";
                 dbCommand.ExecuteNonQuery();
 
-                dbCommand.CommandText = "TRUNCATE TABLE Person;";
+                dbCommand.CommandText = "DELETE Person;";
                 dbCommand.ExecuteNonQuery();
 
                 connection.Close();
@@ -198,17 +198,19 @@ namespace Genoom.Simpsons.Repository.Sql.Tests
 
         private static void SeedDb()
         {
-            var file = File.ReadAllLines("TestData\\GenoomSimpsons.Data.sql");
+            var file = File.ReadAllText("TestData\\GenoomSimpsons.Data.sql");
 
             using (var connection = new SqlConnection(ConnectionstringTest)) {
                 connection.Open();
                 var dbCommand = connection.CreateCommand();
 
-                foreach (var line in file)
-                {
-                    dbCommand.CommandText = line;
-                    dbCommand.ExecuteNonQuery();
-                }
+                dbCommand.CommandText = file;
+                dbCommand.ExecuteNonQuery();
+                //foreach (var line in file)
+                //{
+                //    dbCommand.CommandText = line;
+                //    dbCommand.ExecuteNonQuery();
+                //}
 
                 connection.Close();
             }

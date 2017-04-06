@@ -34,11 +34,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{EF27DB84-673
 		doc\Genoom Simpsons Family Tree.vsdx = doc\Genoom Simpsons Family Tree.vsdx
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genoom.Simpsons.Repository.Sql.Tests", "tests\tests.i\Genoom.Simpsons.Repository.Sql.Tests\Genoom.Simpsons.Repository.Sql.Tests.csproj", "{FA533514-F92D-40DE-B26C-BC8A8281D324}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genoom.Simpsons.Web.Tests", "tests\tests.u\Genoom.Simpsons.Web.Tests\Genoom.Simpsons.Web.Tests.csproj", "{EE8DB720-1A6E-4978-B1DD-69CAE856E535}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genoom.Simpsons.Repository.MongoDb.Tests", "tests\tests.i\Genoom.Simpsons.Repository.MongoDb.Tests\Genoom.Simpsons.Repository.MongoDb.Tests.csproj", "{7ED621A9-B4F6-4BF2-B775-6C20AE1B3582}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Genoom.Simpsons.Web.Tests", "tests\tests.u\Genoom.Simpsons.Web.Tests\Genoom.Simpsons.Web.Tests.csproj", "{4C36844D-5D39-4EA6-9152-BC1AD3E4BBFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Genoom.Simpsons.Repository.Sql.Tests", "tests\tests.i\Genoom.Simpsons.Repository.Sql.Tests\Genoom.Simpsons.Repository.Sql.Tests.csproj", "{0CB5EBC7-8885-45B7-85F7-7604F3885EE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -66,18 +66,18 @@ Global
 		{BD30BD11-D49A-4D34-9C60-80CE4142C7E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD30BD11-D49A-4D34-9C60-80CE4142C7E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD30BD11-D49A-4D34-9C60-80CE4142C7E7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FA533514-F92D-40DE-B26C-BC8A8281D324}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FA533514-F92D-40DE-B26C-BC8A8281D324}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FA533514-F92D-40DE-B26C-BC8A8281D324}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FA533514-F92D-40DE-B26C-BC8A8281D324}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EE8DB720-1A6E-4978-B1DD-69CAE856E535}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EE8DB720-1A6E-4978-B1DD-69CAE856E535}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EE8DB720-1A6E-4978-B1DD-69CAE856E535}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EE8DB720-1A6E-4978-B1DD-69CAE856E535}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7ED621A9-B4F6-4BF2-B775-6C20AE1B3582}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7ED621A9-B4F6-4BF2-B775-6C20AE1B3582}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7ED621A9-B4F6-4BF2-B775-6C20AE1B3582}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7ED621A9-B4F6-4BF2-B775-6C20AE1B3582}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C36844D-5D39-4EA6-9152-BC1AD3E4BBFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C36844D-5D39-4EA6-9152-BC1AD3E4BBFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C36844D-5D39-4EA6-9152-BC1AD3E4BBFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C36844D-5D39-4EA6-9152-BC1AD3E4BBFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CB5EBC7-8885-45B7-85F7-7604F3885EE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CB5EBC7-8885-45B7-85F7-7604F3885EE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CB5EBC7-8885-45B7-85F7-7604F3885EE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CB5EBC7-8885-45B7-85F7-7604F3885EE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -91,8 +91,8 @@ Global
 		{8D0802D4-EA45-49F7-88AB-A1FA15782724} = {3905F7E3-A3B2-4C5B-83EE-60BA58006FC1}
 		{3905F7E3-A3B2-4C5B-83EE-60BA58006FC1} = {F4A7AFB2-E492-406A-9CEF-6C6DB92E4380}
 		{BD30BD11-D49A-4D34-9C60-80CE4142C7E7} = {F4A7AFB2-E492-406A-9CEF-6C6DB92E4380}
-		{FA533514-F92D-40DE-B26C-BC8A8281D324} = {7C06FB18-28BD-4B83-8E1C-41A9C28F8ECA}
-		{EE8DB720-1A6E-4978-B1DD-69CAE856E535} = {94D41AED-D764-4781-8E15-E42B443A6932}
 		{7ED621A9-B4F6-4BF2-B775-6C20AE1B3582} = {7C06FB18-28BD-4B83-8E1C-41A9C28F8ECA}
+		{4C36844D-5D39-4EA6-9152-BC1AD3E4BBFF} = {94D41AED-D764-4781-8E15-E42B443A6932}
+		{0CB5EBC7-8885-45B7-85F7-7604F3885EE5} = {7C06FB18-28BD-4B83-8E1C-41A9C28F8ECA}
 	EndGlobalSection
 EndGlobal

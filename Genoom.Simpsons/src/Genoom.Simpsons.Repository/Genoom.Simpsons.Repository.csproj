@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Genoom.com Simpsons Sample</Description>
+    <Copyright>2017 Albert Giménez</Copyright>
+    <AssemblyTitle>Genoom.com Simpsons Sample</AssemblyTitle>
+    <TargetFramework>netstandard1.6</TargetFramework>
+    <AssemblyName>Genoom.Simpsons.Repository</AssemblyName>
+    <PackageId>Genoom.Simpsons.Repository</PackageId>
+    <NetStandardImplicitPackageVersion>1.6.1</NetStandardImplicitPackageVersion>
+    <PackageTargetFallback>$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Genoom.Simpsons.Model\Genoom.Simpsons.Model.csproj" />
+  </ItemGroup>
+
+</Project>

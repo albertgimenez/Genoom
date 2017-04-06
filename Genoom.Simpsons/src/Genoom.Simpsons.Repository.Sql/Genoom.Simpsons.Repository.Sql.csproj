@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Genoom.com Simpsons Sample</Description>
+    <Copyright>2017 Albert Gim�nez</Copyright>
+    <AssemblyTitle>Genoom.com Simpsons Sample</AssemblyTitle>
+    <TargetFramework>netstandard1.6</TargetFramework>
+    <AssemblyName>Genoom.Simpsons.Repository.Sql</AssemblyName>
+    <PackageId>Genoom.Simpsons.Repository.Sql</PackageId>
+    <NetStandardImplicitPackageVersion>1.6.1</NetStandardImplicitPackageVersion>
+    <PackageTargetFallback>$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Genoom.Simpsons.Model\Genoom.Simpsons.Model.csproj" />
+    <ProjectReference Include="..\Genoom.Simpsons.Repository\Genoom.Simpsons.Repository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="1.50.2" />
+  </ItemGroup>
+
+</Project>

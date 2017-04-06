@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <Description>Genoom.com Simpsons Sample</Description>
+    <Copyright>2017 Albert Giménez</Copyright>
+    <AssemblyTitle>Genoom.com Simpsons Sample</AssemblyTitle>
+    <TargetFramework>netcoreapp1.0</TargetFramework>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+    <AssemblyName>Genoom.Simpsons.Web</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <PackageId>Genoom.Simpsons.Web</PackageId>
+    <RuntimeIdentifiers>win10-x64;win10-x86;win81-x64;win81-x86;win7-x64;win7-x86</RuntimeIdentifiers>
+    <RuntimeFrameworkVersion>1.1.1</RuntimeFrameworkVersion>
+    <PackageTargetFallback>$(PackageTargetFallback);dotnet5.6;portable-net45+win8</PackageTargetFallback>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Genoom.Simpsons.Model\Genoom.Simpsons.Model.csproj" />
+    <ProjectReference Include="..\Genoom.Simpsons.Repository\Genoom.Simpsons.Repository.csproj" />
+    <ProjectReference Include="..\Genoom.Simpsons.Repository.MongoDb\Genoom.Simpsons.Repository.MongoDb.csproj" />
+    <ProjectReference Include="..\Genoom.Simpsons.Repository.Sql\Genoom.Simpsons.Repository.Sql.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Routing" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="1.1.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="1.0.0-rc3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="1.0.0-rc3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="1.0.0-rc3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="1.0.0-rc3" />
+  </ItemGroup>
+
+</Project>

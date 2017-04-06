@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.0</TargetFramework>
+    <AssemblyName>Genoom.Simpsons.Web.Tests</AssemblyName>
+    <PackageId>Genoom.Simpsons.Web.Tests</PackageId>
+    <ServerGarbageCollection>true</ServerGarbageCollection>
+    <RuntimeIdentifiers>win10-x64;win81-x64</RuntimeIdentifiers>
+    <PackageTargetFallback>$(PackageTargetFallback);dotnet5.6;portable-net45+win8</PackageTargetFallback>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Genoom.Simpsons.Model\Genoom.Simpsons.Model.csproj" />
+    <ProjectReference Include="..\..\..\src\Genoom.Simpsons.Web\Genoom.Simpsons.Web.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Moq" Version="4.7.8" />
+    <PackageReference Include="MSTest.TestAdapter" Version="1.1.14" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.1.14" />
+  </ItemGroup>
+
+</Project>

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F4A7AFB2-E492-406A-9CEF-6C6DB92E4380}"
 EndProject
@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		global.json = global.json
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Genoom.Simpsons.Model", "src\Genoom.Simpsons.Model\Genoom.Simpsons.Model.xproj", "{14B7C08E-2CCE-44F2-80D0-C84E24751732}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genoom.Simpsons.Model", "src\Genoom.Simpsons.Model\Genoom.Simpsons.Model.csproj", "{14B7C08E-2CCE-44F2-80D0-C84E24751732}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{31F3DBF5-E00F-4C07-B20C-47C2FC6B18C7}"
 EndProject
@@ -18,15 +18,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests.u", "tests.u", "{94D4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests.i", "tests.i", "{7C06FB18-28BD-4B83-8E1C-41A9C28F8ECA}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Genoom.Simpsons.Web", "src\Genoom.Simpsons.Web\Genoom.Simpsons.Web.xproj", "{B160B9B6-9657-422B-A513-AB1EE9745E7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genoom.Simpsons.Web", "src\Genoom.Simpsons.Web\Genoom.Simpsons.Web.csproj", "{B160B9B6-9657-422B-A513-AB1EE9745E7B}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Genoom.Simpsons.Repository.MongoDb", "src\Genoom.Simpsons.Repository.MongoDb\Genoom.Simpsons.Repository.MongoDb.xproj", "{B50319EE-AB05-4FA3-843E-FA95FD16F0C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genoom.Simpsons.Repository.MongoDb", "src\Genoom.Simpsons.Repository.MongoDb\Genoom.Simpsons.Repository.MongoDb.csproj", "{B50319EE-AB05-4FA3-843E-FA95FD16F0C6}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Genoom.Simpsons.Repository.Sql", "src\Genoom.Simpsons.Repository.Sql\Genoom.Simpsons.Repository.Sql.xproj", "{8D0802D4-EA45-49F7-88AB-A1FA15782724}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genoom.Simpsons.Repository.Sql", "src\Genoom.Simpsons.Repository.Sql\Genoom.Simpsons.Repository.Sql.csproj", "{8D0802D4-EA45-49F7-88AB-A1FA15782724}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository.Strategy", "Repository.Strategy", "{3905F7E3-A3B2-4C5B-83EE-60BA58006FC1}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Genoom.Simpsons.Repository", "src\Genoom.Simpsons.Repository\Genoom.Simpsons.Repository.xproj", "{BD30BD11-D49A-4D34-9C60-80CE4142C7E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genoom.Simpsons.Repository", "src\Genoom.Simpsons.Repository\Genoom.Simpsons.Repository.csproj", "{BD30BD11-D49A-4D34-9C60-80CE4142C7E7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{EF27DB84-6733-40AA-A609-843E0A9A4C63}"
 	ProjectSection(SolutionItems) = preProject
@@ -34,11 +34,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{EF27DB84-673
 		doc\Genoom Simpsons Family Tree.vsdx = doc\Genoom Simpsons Family Tree.vsdx
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Genoom.Simpsons.Repository.Sql.Tests", "tests\tests.i\Genoom.Simpsons.Repository.Sql.Tests\Genoom.Simpsons.Repository.Sql.Tests.xproj", "{FA533514-F92D-40DE-B26C-BC8A8281D324}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genoom.Simpsons.Repository.Sql.Tests", "tests\tests.i\Genoom.Simpsons.Repository.Sql.Tests\Genoom.Simpsons.Repository.Sql.Tests.csproj", "{FA533514-F92D-40DE-B26C-BC8A8281D324}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Genoom.Simpsons.Web.Tests", "tests\tests.u\Genoom.Simpsons.Web.Tests\Genoom.Simpsons.Web.Tests.xproj", "{EE8DB720-1A6E-4978-B1DD-69CAE856E535}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genoom.Simpsons.Web.Tests", "tests\tests.u\Genoom.Simpsons.Web.Tests\Genoom.Simpsons.Web.Tests.csproj", "{EE8DB720-1A6E-4978-B1DD-69CAE856E535}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Genoom.Simpsons.Repository.MongoDb.Tests", "tests\tests.i\Genoom.Simpsons.Repository.MongoDb.Tests\Genoom.Simpsons.Repository.MongoDb.Tests.xproj", "{7ED621A9-B4F6-4BF2-B775-6C20AE1B3582}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genoom.Simpsons.Repository.MongoDb.Tests", "tests\tests.i\Genoom.Simpsons.Repository.MongoDb.Tests\Genoom.Simpsons.Repository.MongoDb.Tests.csproj", "{7ED621A9-B4F6-4BF2-B775-6C20AE1B3582}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

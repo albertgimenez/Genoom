@@ -85,11 +85,11 @@ namespace Genoom.Simpsons.Repository.Sql.Tests
 
             //ASSERT
             Assert.IsNotNull(testData);
-            Assert.IsTrue(testData.Parents.Any(p => p.Name == "Abraham Simpson"));
-            Assert.IsTrue(testData.Parents.Any(p => p.Name == "Penelope Olsen"));
-            Assert.IsTrue(testData.Parents.SingleOrDefault(p => p.Name == "Abraham Simpson").Parents.Any(p => p.Name == "Orville Simpson"));
-            Assert.IsTrue(testData.Parents.SingleOrDefault(p => p.Name == "Abraham Simpson").Parents.Any(p => p.Name == "Yuma Hickman"));
-            Assert.IsFalse(testData.Parents.SingleOrDefault(p => p.Name == "Penelope Olsen").Parents.Any());
+            Assert.IsTrue(testData.Parents.Any(p => p.Name == "Abraham"));
+            Assert.IsTrue(testData.Parents.Any(p => p.Name == "Penelope"));
+            Assert.IsTrue(testData.Parents.SingleOrDefault(p => p.Name == "Abraham").Parents.Any(p => p.Name == "Orville"));
+            Assert.IsTrue(testData.Parents.SingleOrDefault(p => p.Name == "Abraham").Parents.Any(p => p.Name == "Yuma"));
+            Assert.IsNull(testData.Parents.SingleOrDefault(p => p.Name == "Penelope").Parents);
         }
 
         /// <summary>
@@ -145,27 +145,9 @@ namespace Genoom.Simpsons.Repository.Sql.Tests
 
             //ASSERT
             Assert.IsNotNull(testData);
-            Assert.IsFalse(Guid.Parse(testData) != Guid.Empty);
+            Assert.IsTrue(Guid.Parse(testData) != Guid.Empty);
         }
 
-        /// <summary>
-        /// Intention: Create a new child with name "Test" to Lisa SImpson, we check that has no correct partner.
-        /// Expected: Failure
-        /// </summary>
-        /// <returns></returns>
-        [TestMethod]
-        public async Task AddChildAsyncWithNoPartnerFailTest()
-        {
-            //ARRANGE
-            var testObject = new PeopleRepositorySql(ConnectionstringTest);
-            var testPerson = GetTestPerson();
-
-            //ACT
-            var testData = await testObject.AddChildAsync("Lisa", testPerson);
-
-            //ASSERT
-            Assert.IsNull(testData);
-        }
 
 
         // Private Methods
